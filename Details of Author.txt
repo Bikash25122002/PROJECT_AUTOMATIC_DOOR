@@ -1,0 +1,22 @@
+
+
+TITLE: DESIGN AND CONSTRUCTION OF AUTOMATIC DOOR
+
+PROJECT ID: 29342
+
+PRESENTED BY:
+
+1. Name: BIKASH MAHARANA
+	Mail: bmb120@nist.edu
+		   bikash.maharana135@gmail.com
+	P.h.: 7978760805
+      Roll.No: 202014356
+      Branch: C.S.E-D
+      Batch: 2020
+2. Name: DILIP KUMAR DASH
+	Mail: ddb020@nist.edu
+		   dashd6563@gmail.com
+	P.h.: 9778780685
+      Roll.No: 202014357
+      Branch: C.S.E-D
+      Batch: 2020

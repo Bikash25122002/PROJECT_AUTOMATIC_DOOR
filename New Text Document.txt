@@ -1,0 +1,61 @@
+CODE FOR ARDUINO UNO
+
+#Testing code for prototype model:- 
+
+#Automatic 2 side door using ultrasonic sensor, 2 IR sensor / PIR sensor, Arduino UNO R3:-
+
+
+const int irSensor1Pin = 2; 
+const int irSensor2Pin = 3; 
+const int ultrasonicTrigPin = 4;
+const int ultrasonicEchoPin = 5;
+const int motorPin = 6;
+
+const int ultrasonicThreshold = 50;
+const int irSensorThreshold = 500;
+
+void setup() {
+  Serial.begin(9600);
+  
+  pinMode(irSensor1Pin, INPUT);
+  pinMode(irSensor2Pin, INPUT);
+
+  pinMode(motorPin, OUTPUT);
+}
+
+void loop() {
+  int irSensor1Value = digitalRead(irSensor1Pin);
+  int irSensor2Value = digitalRead(irSensor2Pin);
+  int ultrasonicDistance = getUltrasonicDistance();
+  
+  if (irSensor1Value == LOW && irSensor2Value == LOW && ultrasonicDistance < ultrasonicThreshold) {
+    digitalWrite(motorPin, HIGH);
+    delay(1000);
+    digitalWrite(motorPin, LOW);
+  }
+  
+  if (irSensor2Value == HIGH) {
+    digitalWrite(motorPin, HIGH);
+    delay(1000);
+
+    digitalWrite(motorPin, LOW);
+  }
+  
+  Serial.print("IR Sensor 1: ");
+  Serial.println(irSensor1Value);
+  Serial.print("IR Sensor 2: ");
+  Serial.println(irSensor2Value);
+  Serial.print("Ultrasonic Distance: ");
+  Serial.println(ultrasonicDistance);
+
+  delay(100);
+}
+
+int getUltrasonicDistance() {
+  digitalWrite(ultrasonicTrigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(ultrasonicTrigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(ultrasonicTrigPin, LOW);
+  return pulseIn(ultrasonicEchoPin, HIGH) * 0.034 / 2;
+}
